@@ -11,6 +11,7 @@ function AppAside(props) {
                 style={{minWidth:'300px', maxWidth:'300px'}}
                 bg="green.100" >
                 <Text>Hello from AppAside</Text>
+                {/* test */}
             </VStack>
         </React.Fragment>
     )
