@@ -1,9 +1,9 @@
 import React from "react";
 // import { withRouter } from "react-router"
-import {Text, VStack} from '@chakra-ui/react';
+import { Text, VStack } from '@chakra-ui/react';
 
 
-function AppAside(props) {
+function AppAside() {
 
     return(
         <React.Fragment>

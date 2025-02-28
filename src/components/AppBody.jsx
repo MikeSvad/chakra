@@ -5,7 +5,7 @@ import AppAside from "./AppAside";
 import AppSidebar from "./AppSidebar";
 
 
-function AppBody(props) {
+function AppBody() {
 
     return(
         <React.Fragment>

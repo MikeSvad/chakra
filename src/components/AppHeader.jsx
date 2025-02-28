@@ -2,21 +2,20 @@ import React from "react";
 // import { withRouter } from "react-router"
 import {
   Box,
-  VStack,
-  Center,
-  HStack,
-  Spacer,
-  SimpleGrid,
   Button,
+  Center,
   Flex,
+  HStack,
+  SimpleGrid,
+  Spacer,
+  VStack,
 } from "@chakra-ui/react";
-import { AsideSwitcher } from "./AsideSwitcher";
-import { BsSun, BsMoonStarsFill } from "react-icons/bs";
-import { useColorMode } from "./ui/color-mode"
+import { BsMoonStarsFill, BsSun } from "react-icons/bs";
+import { useColorMode } from "./ui/color-mode";
 
 // import { ColorModeSwitcher } from "../../../utils/ColorModeSwitcher";
 
-function AppHeader(props) {
+function AppHeader() {
   const { colorMode, toggleColorMode } = useColorMode();
   return (
     <React.Fragment>

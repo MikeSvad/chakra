@@ -1,8 +1,7 @@
 import React from "react";
 // import { withRouter } from "react-router"
-import { Text, VStack, Box, Button, Flex } from "@chakra-ui/react";
-import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
-import { RiArrowRightLine, RiArrowLeftLine } from "react-icons/ri";
+import { Box, Button, Flex, Text, VStack } from "@chakra-ui/react";
+import { RiArrowLeftLine, RiArrowRightLine } from "react-icons/ri";
 
 function AppSidebar(props) {
   const [size, setSize] = React.useState(250);
@@ -18,7 +17,7 @@ function AppSidebar(props) {
       <VStack
         h="100%"
         w={size + "px"}
-        bg="red.200"
+        bg="{colors.test}"
         style={{ minWidth: size + "px", maxWidth: size + "px" }}
       >
         <Box  h="40px" align={"end"} p="1">
