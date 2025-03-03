@@ -1,31 +1,24 @@
 import React from "react";
 // import { withRouter } from "react-router"
-import { Box, Button, Flex, Text, VStack, Icon, List, } from "@chakra-ui/react";
-import { RiArrowLeftLine, RiArrowRightLine } from "react-icons/ri";
 import {
   AccordionItem,
   AccordionItemContent,
   AccordionItemTrigger,
-  AccordionRoot,
+  AccordionRoot, Box, Button, Flex, Icon, List, Text, VStack,
 } from "@chakra-ui/react";
-import { LuChartBarStacked, LuTags, LuAlarmClock } from "react-icons/lu";
-import {
-  MenuContent,
-  MenuItem,
-  MenuRoot,
-  MenuTrigger,
-} from "@chakra-ui/react";
+import { LuAlarmClock, LuChartBarStacked, LuTags } from "react-icons/lu";
+import { RiArrowLeftLine, RiArrowRightLine } from "react-icons/ri";
 const styleListItem = {
   paddingLeft: 30,
   lineHeight: '40px',
   background: 'rgba(255,255,255, 0.05)'
 }
 
-const listItemContent = <List.Root style={{listStyleType: 'none',}}>
-<List.Item style={styleListItem}>
+const listItemContent=(onClick) => <List.Root style={{listStyleType: 'none',}}>
+<List.Item style={styleListItem} onClick={(e)=>{onClick('form')}}>
   Lorem ipsum dolor
 </List.Item>
-<List.Item style={styleListItem}>
+<List.Item style={styleListItem} onClick={(e)=>{onClick('form2')}}>
   Assumenda 1
 </List.Item>
 <List.Item style={styleListItem}>
@@ -33,46 +26,46 @@ const listItemContent = <List.Root style={{listStyleType: 'none',}}>
 </List.Item>
 </List.Root>;
 
-const items = [
+const items =(onClick)=> [
   {
     value: "a",
     title: "First Item",
-    text: listItemContent,
+    text: listItemContent(onClick),
     icon: <LuTags />,
   },
   {
     value: "b",
     title: "Second Item",
-    text: listItemContent,
+    text: listItemContent(onClick),
     icon: <LuChartBarStacked />,
   },
   {
     value: "c",
     title: "Third Item",
-    text: listItemContent,
+    text: listItemContent(onClick),
     icon: <LuAlarmClock />,
   },
   {
     value: "d",
     title: "First Item",
-    text: listItemContent,
+    text: listItemContent(onClick),
     icon: <LuTags />,
   },
   {
     value: "e",
     title: "Second Item",
-    text: listItemContent,
+    text: listItemContent(onClick),
     icon: <LuChartBarStacked />,
   },
   {
     value: "f",
     title: "Third Item",
-    text: listItemContent,
+    text: listItemContent(onClick),
     icon: <LuAlarmClock />,
   },
 ];
 
-function AppSidebar(props) {
+function AppSidebar({onClickMenuItem}) {
   const [size, setSize] = React.useState(250);
   const [iconName, setIconName] = React.useState(RiArrowLeftLine);
 
@@ -80,7 +73,6 @@ function AppSidebar(props) {
     setSize(size == 50 ? 250 : 50);
     setIconName(size == 50 ? RiArrowLeftLine : RiArrowRightLine);
   };
-
   return (
     <React.Fragment>
       <VStack
@@ -121,7 +113,7 @@ function AppSidebar(props) {
             }}
           >
             <AccordionRoot collapsible multiple>
-              {items.map((item, index) => (
+              {items(onClickMenuItem).map((item, index) => (
                 <AccordionItem key={index} value={item.value}>
                   <AccordionItemTrigger>
                     <Icon fontSize="lg" color="fg.subtle">
