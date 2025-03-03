@@ -7,7 +7,13 @@ const customConfig = defineConfig({
     semanticTokens: {
       colors: {
         "test": {
-          value: { _light: "red", _dark: "blue" },
+          value: { _light: "#f0f0f0", _dark: "#111527" },
+        },
+        "test-header": {
+          value: { _light: "#f0f0f0", _dark: "#111527" },
+        },
+        "test-footer": {
+          value: { _light: "#f0f0f0", _dark: "#111527" },
         },
       },
     },

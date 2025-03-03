@@ -1,7 +1,76 @@
 import React from "react";
 // import { withRouter } from "react-router"
-import { Box, Button, Flex, Text, VStack } from "@chakra-ui/react";
+import { Box, Button, Flex, Text, VStack, Icon, List, } from "@chakra-ui/react";
 import { RiArrowLeftLine, RiArrowRightLine } from "react-icons/ri";
+import {
+  AccordionItem,
+  AccordionItemContent,
+  AccordionItemTrigger,
+  AccordionRoot,
+} from "@chakra-ui/react";
+import { LuChartBarStacked, LuTags, LuAlarmClock } from "react-icons/lu";
+import {
+  MenuContent,
+  MenuItem,
+  MenuRoot,
+  MenuTrigger,
+} from "@chakra-ui/react";
+const styleListItem = {
+  paddingLeft: 30,
+  lineHeight: '40px',
+  background: 'rgba(255,255,255, 0.05)'
+}
+
+const listItemContent = <List.Root style={{listStyleType: 'none',}}>
+<List.Item style={styleListItem}>
+  Lorem ipsum dolor
+</List.Item>
+<List.Item style={styleListItem}>
+  Assumenda 1
+</List.Item>
+<List.Item style={styleListItem}>
+  Quidem quis sed
+</List.Item>
+</List.Root>;
+
+const items = [
+  {
+    value: "a",
+    title: "First Item",
+    text: listItemContent,
+    icon: <LuTags />,
+  },
+  {
+    value: "b",
+    title: "Second Item",
+    text: listItemContent,
+    icon: <LuChartBarStacked />,
+  },
+  {
+    value: "c",
+    title: "Third Item",
+    text: listItemContent,
+    icon: <LuAlarmClock />,
+  },
+  {
+    value: "d",
+    title: "First Item",
+    text: listItemContent,
+    icon: <LuTags />,
+  },
+  {
+    value: "e",
+    title: "Second Item",
+    text: listItemContent,
+    icon: <LuChartBarStacked />,
+  },
+  {
+    value: "f",
+    title: "Third Item",
+    text: listItemContent,
+    icon: <LuAlarmClock />,
+  },
+];
 
 function AppSidebar(props) {
   const [size, setSize] = React.useState(250);
@@ -20,8 +89,9 @@ function AppSidebar(props) {
         bg="{colors.test}"
         style={{ minWidth: size + "px", maxWidth: size + "px" }}
       >
-        <Box  h="40px" align={"end"} p="1">
-          <Button w="fit-content"
+        <Box h="40px" align={"end"} p="1" w="100%">
+          <Button variant="ghost"
+            w="100%"
             onClick={togglePanel}
             size="xs"
             // leftIcon={iconName}
@@ -30,26 +100,39 @@ function AppSidebar(props) {
             {iconName}
           </Button>
         </Box>
-        {size!= 50 && <Text>Hello from AppSidebar</Text>}
-        <Flex minH={0}>
-          <Box w={'100%'} overflow={'auto'} scrollbarGutter={'stable'} bg={'yellow'} padding={2}
-          css={{
-            '&::-webkit-scrollbar': {
-              width: '4px',
-            },
-            '&::-webkit-scrollbar-track': {
-              width: '6px',
-            },
-            '&::-webkit-scrollbar-thumb': {
-              background: 'black',
-              borderRadius: '24px',
-            },
-          }}
+        {size != 50 && <Text>Hello from AppSidebar</Text>}
+        <Flex minH={0} w={"100%"}>
+          <Box
+            w={"100%"}
+            overflow={"auto"}
+            scrollbarGutter={"stable"}
+            padding={2}
+            css={{
+              "&::-webkit-scrollbar": {
+                width: "4px",
+              },
+              "&::-webkit-scrollbar-track": {
+                width: "6px",
+              },
+              "&::-webkit-scrollbar-thumb": {
+                background: "black",
+                borderRadius: "24px",
+              },
+            }}
           >
-            Sed ut perspiciatis, unde omnis iste natus error sit voluptatem
-            accusantium doloremque laudantium, totam rem aperiam eaque ipsa,
-            quae ab illo inventore veritatis et quasi architecto beatae vitae
-            
+            <AccordionRoot collapsible multiple>
+              {items.map((item, index) => (
+                <AccordionItem key={index} value={item.value}>
+                  <AccordionItemTrigger>
+                    <Icon fontSize="lg" color="fg.subtle">
+                      {item.icon}
+                    </Icon>
+                    {item.title}
+                  </AccordionItemTrigger>
+                  <AccordionItemContent>{item.text}</AccordionItemContent>
+                </AccordionItem>
+              ))}
+            </AccordionRoot>
           </Box>
         </Flex>
       </VStack>

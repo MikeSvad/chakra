@@ -14,13 +14,16 @@ function App() {
   return (
     <>
       {/* <Theme appearance="light" colorPalette="green"> */}
-        <Box w="100%">
-          <AppHeader w="100%" h="100px" />
-          <Flex w="100%" bg="blue.200">
-            <AppBody />
-          </Flex>
-          <AppFooter />  
-        </Box>
+      <Box w="100%" h="100%">
+        <AppHeader w="100%" h="100px"/>
+        <Flex
+          w="100%"
+          // bg="blue.200"
+        >
+          <AppBody />
+        </Flex>
+        {/* <AppFooter /> */}
+      </Box>
       {/* </Theme> */}
     </>
   );
